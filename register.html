@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register - Campus Event Management</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  .navbar {
+    display: flex;
+    background-color: #1e3a5f;
+    padding: 15px;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 18px;
+  }
+  .container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  button {
+    padding: 8px 14px;
+    margin-right: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  #registerForm {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 20px;
+    margin-top: 20px;
+    width: 450px;
+  }
+  .field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  input, select {
+    padding: 8px;
+    font-size: 15px;
+    margin-top: 5px;
+  }
+  #message {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  .footer {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="register.html">Register</a>
+</div>
+
+<div class="container">
+  <h1 id="registerHeading">Event Registration</h1>
+  <p>Fill this form to register for a college event.</p>
+
+  <button onclick="changeSize()">Change Heading Size</button>
+  <button onclick="toggleForm()">Show / Hide Form</button>
+
+  <div id="registerForm">
+    <div class="field">
+      <label>Student Name</label>
+      <input type="text" id="studentName">
+    </div>
+    <div class="field">
+      <label>Roll Number</label>
+      <input type="text" id="rollNumber">
+    </div>
+    <div class="field">
+      <label>Email Address</label>
+      <input type="text" id="email">
+    </div>
+    <div class="field">
+      <label>Select Event</label>
+      <select id="eventSelect">
+        <option value="">-- Select --</option>
+        <option value="Tech Fest">Tech Fest</option>
+        <option value="Cultural Night">Cultural Night</option>
+        <option value="Hackathon">Hackathon</option>
+        <option value="Sports Day">Sports Day</option>
+      </select>
+    </div>
+    <button onclick="register()">Register</button>
+  </div>
+
+  <p id="message"></p>
+</div>
+
+<div class="footer">
+  <p>Campus Event Management 2026</p>
+</div>
+
+<script>
+  var sizeNumber = 0;
+
+  function register() {
+    var name = document.getElementById("studentName").value;
+    var roll = document.getElementById("rollNumber").value;
+    var email = document.getElementById("email").value;
+    var event = document.getElementById("eventSelect").value;
+    var message = document.getElementById("message");
+
+    if (name == "" || roll == "" || email == "" || event == "") {
+      message.textContent = "Error: Please fill all the fields!";
+      message.style.color = "red";
+    } else {
+      message.textContent = "Thank you " + name + "! You have successfully registered for " + event + ". Your roll number is " + roll + ".";
+      message.style.color = "green";
+    }
+  }
+
+  function changeSize() {
+    var sizes = ["32px", "45px", "60px", "24px"];
+    sizeNumber = sizeNumber + 1;
+    if (sizeNumber == 4) {
+      sizeNumber = 0;
+    }
+    document.getElementById("registerHeading").style.fontSize = sizes[sizeNumber];
+  }
+
+  function toggleForm() {
+    var form = document.getElementById("registerForm");
+    if (form.style.display == "none") {
+      form.style.display = "block";
+    } else {
+      form.style.display = "none";
+    }
+  }
+</script>
+
+</body>
+</html>

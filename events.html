@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Events - Campus Event Management</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  .navbar {
+    display: flex;
+    background-color: #1e3a5f;
+    padding: 15px;
+  }
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 18px;
+  }
+  .container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  button {
+    padding: 8px 14px;
+    margin-right: 8px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .card {
+    width: 420px;
+    background-color: white;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  .box {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-top: 20px;
+  }
+  input {
+    padding: 8px;
+    font-size: 15px;
+    width: 250px;
+  }
+  #message {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .footer {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="register.html">Register</a>
+</div>
+
+<div class="container">
+  <h1>College Events</h1>
+
+  <div class="cards">
+    <div class="card" id="card1">
+      <h3 id="card1Title">Tech Fest</h3>
+      <p>Date: 14 November 2026</p>
+      <p>Venue: Main Auditorium</p>
+      <p>Coding contests, project exhibition and a talk by guests from the industry.</p>
+    </div>
+    <div class="card" id="card2">
+      <h3>Cultural Night</h3>
+      <p>Date: 28 November 2026</p>
+      <p>Venue: Open Air Theatre</p>
+      <p>Singing, dancing and drama performances by students.</p>
+    </div>
+    <div class="card" id="card3">
+      <h3>Hackathon</h3>
+      <p>Date: 5 December 2026</p>
+      <p>Venue: Computer Lab, Block B</p>
+      <p>Teams build a project in 24 hours. Bring your laptop.</p>
+    </div>
+    <div class="card" id="card4">
+      <h3>Sports Day</h3>
+      <p>Date: 12 December 2026</p>
+      <p>Venue: College Ground</p>
+      <p>Cricket, football and relay race between departments.</p>
+    </div>
+  </div>
+
+  <button onclick="changeCard()">Change Tech Fest Card</button>
+
+  <div class="box">
+    <h3>Suggest a New Event</h3>
+    <input type="text" id="eventName" placeholder="Enter event name">
+    <button onclick="addEvent()">Add Event</button>
+    <p id="message"></p>
+    <h4>Suggested Events:</h4>
+    <div id="eventList"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Campus Event Management 2026</p>
+</div>
+
+<script>
+  var changed = false;
+
+  function addEvent() {
+    var name = document.getElementById("eventName").value;
+
+    if (name == "") {
+      document.getElementById("message").textContent = "Please enter an event name!";
+      document.getElementById("message").style.color = "red";
+    } else {
+      document.getElementById("eventList").innerHTML += "<p>" + name + "</p>";
+      document.getElementById("message").textContent = "Event \"" + name + "\" submitted successfully!";
+      document.getElementById("message").style.color = "green";
+      document.getElementById("eventName").value = "";
+    }
+  }
+
+  function changeCard() {
+    if (changed == false) {
+      document.getElementById("card1").style.backgroundColor = "yellow";
+      document.getElementById("card1Title").textContent = "Tech Fest - Registrations Open!";
+      changed = true;
+    } else {
+      document.getElementById("card1").style.backgroundColor = "white";
+      document.getElementById("card1Title").textContent = "Tech Fest";
+      changed = false;
+    }
+  }
+</script>
+
+</body>
+</html>
