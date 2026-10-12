@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Campus Event Management</title>
+<style>
+
+  .navbar {
+    display: flex;
+    background-color: #1e3a5f;
+    padding: 15px;
+  }
+  .navbar a {
+    color: white;
+    margin-left: 250px;
+    font-size: 18px;
+  }
+  .container {
+    width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  #intro {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    background-color: ;
+  }
+  button {
+    border-radius: 5px;
+    border: 1px;
+    padding: 8px 14px;
+    margin-right: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #94baec;
+  }
+
+  button:hover{
+    background-color: #4e6b91;
+  }
+  .cards {
+    display: flex;
+    justify-content: space-between;
+  }
+  .card {
+    width: 280px;
+    background-color: #8eadd4;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-top: 20px;
+    
+  }
+  #highlights {
+    background-color: white;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: #8eadd4;
+  }
+  .hide {
+    display: none;
+  }
+  .footer {
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body style="background-color: rgb(188, 215, 252);">
+
+<div class="navbar">
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="register.html">Register</a>
+</div>
+
+<div class="container">
+  <div id="intro">
+    <h1 id="mainHeading">Campus Event Management</h1>
+    <h3>Welcome to our college event website!</h3>
+    <p>On this website students can see the upcoming events of the college, suggest new events and register for the events they like.</p>
+    <button onclick="changeHeading()">Change Heading</button>
+    <button onclick="changeColor()">Change Card Color</button>
+    <button onclick="toggleHighlights()">Show / Hide Highlights</button>
+  </div>
+
+  <h2>Upcoming Events</h2>
+  <div class="cards">
+    <div class="card" id="card1">
+      <h3>Tech Fest</h3>
+      <p>Date: 14 November 2026</p>
+      <p>Coding contests and project exhibition.</p>
+    </div>
+    <div class="card" id="card2">
+      <h3>Cultural Night</h3>
+      <p>Date: 28 November 2026</p>
+      <p>Singing, dancing and drama by students.</p>
+    </div>
+    <div class="card" id="card3">
+      <h3>Hackathon</h3>
+      <p>Date: 5 December 2026</p>
+      <p>24 hour hackathon in the computer lab.</p>
+    </div>
+  </div>
+
+  <div id="highlights">
+    <h3>Event Highlights</h3>
+    <p>1. More than 20 events this semester</p>
+    <p>2. Certificates for all participants</p>
+    <p>3. Prizes for the winners</p>
+  </div>
+</div>
+
+<div class="footer">
+  <p>Campus Event Management 2026</p>
+</div>
+
+<script>
+  var headingNumber = 0;
+  var colorNumber = 0;
+
+  function changeHeading() {
+    var headings = ["Campus Event Management", "Welcome Students!", "Join Our College Events"];
+    headingNumber = headingNumber + 1;
+    if (headingNumber == 3) {
+      headingNumber = 0;
+    }
+    document.getElementById("mainHeading").textContent = headings[headingNumber];
+  }
+
+  function changeColor() {
+    var colors = ["white", "lightyellow", "lightblue", "lightgreen"];
+    colorNumber = colorNumber + 1;
+    if (colorNumber == 4) {
+      colorNumber = 0;
+    }
+    document.getElementById("card1").style.backgroundColor = colors[colorNumber];
+  }
+
+  function toggleHighlights() {
+    document.getElementById("highlights").classList.toggle("hide");
+  }
+</script>
+
+</body>
+</html>
